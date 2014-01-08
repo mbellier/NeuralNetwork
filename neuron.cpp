@@ -40,6 +40,11 @@ void Neuron::excitate(float value, float weight){
   excitate(value * weight);
 }
 
+void Neuron::process(){
+  potential += delta;
+  delta = 0;
+}
+
 void Neuron::activate(){
   for(std::vector< Output* >::iterator out = outputs.begin();
       out != outputs.end();
@@ -83,6 +88,11 @@ int main(){
   
 
   for (int i = 0; i < 5; i++){
+
+    a1.process();
+    a2.process();
+    b1.process();
+    b2.process();
 
     a1.excitate(1, .8);
     a2.excitate(1, .2);

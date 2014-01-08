@@ -15,7 +15,9 @@ class Neuron{
   void connect(Neuron &neuron, float weight);
   void excitate(float weighted_value);
   void excitate(float value, float weight);
+  void process();
   void info();
+
 
   virtual void compute() = 0;
 
