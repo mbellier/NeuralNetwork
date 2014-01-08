@@ -11,6 +11,7 @@ class Neuron{
   Neuron();
   void init(std::string name, float treshold);
   void setName(std::string name);
+  std::string getName();
   void setTreshold(float treshold);
   void connect(Neuron &neuron, float weight);
   void excitate(float weighted_value);
@@ -20,11 +21,10 @@ class Neuron{
   void info();
 
 
-
   // protected:
   void activate();
 
-  std::string name;
+  std::string name_;
   float treshold;
   float potential;
   float delta;

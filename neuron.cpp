@@ -8,7 +8,7 @@ Output::Output(Neuron &neuron, float weight)
 }
 
 Neuron::Neuron(){
-  this->name = "?";
+  this->name_ = "?";
   this->treshold = 0;
   this->delta=0;
   this->potential=0;
@@ -20,7 +20,7 @@ void Neuron::init(std::string name, float treshold){
 }
 
 void Neuron::setName(std::string name){
-  this->name = name;
+  this->name_ = name;
 }
 
 void Neuron::setTreshold(float treshold){
@@ -51,11 +51,11 @@ void Neuron::activate(){
       ++out) {
     (*out)->neuron.excitate(potential, (*out)->weight);
   }
-   std::cout << " [" << name << "] Activation\n";
+   std::cout << " [" << name_ << "] Activation\n";
 }
 
 void Neuron::info(){
-  std::cout << " [" << name <<"] Potential="<< potential <<", Delta="<< delta <<", Treshold="<< treshold <<"\n";
+  std::cout << " [" << name_ <<"] Potential="<< potential <<", Delta="<< delta <<", Treshold="<< treshold <<"\n";
   
 }
 
@@ -65,6 +65,10 @@ void Neuron::checkActivation(){
     potential = 0;
   }	
 }
+std::string Neuron::getName(){
+  return name_;
+}
+
 
 int main(){
   Neuron a1, a2, b1, b2;
