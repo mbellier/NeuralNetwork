@@ -89,11 +89,6 @@ int main(){
 
   for (int i = 0; i < 5; i++){
 
-    a1.process();
-    a2.process();
-    b1.process();
-    b2.process();
-
     a1.excitate(1, .8);
     a2.excitate(1, .2);
 
@@ -104,6 +99,11 @@ int main(){
     b2.info();
 
     std::cout << "\n";
+
+    a1.process();
+    a2.process();
+    b1.process();
+    b2.process();
     
     a1.compute();
     a2.compute();
