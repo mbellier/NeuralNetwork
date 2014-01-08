@@ -40,7 +40,7 @@ void Neuron::excitate(float value, float weight){
   excitate(value * weight);
 }
 
-void Neuron::process(){
+void Neuron::computePotential(){
   potential += delta;
   delta = 0;
 }
@@ -59,21 +59,15 @@ void Neuron::info(){
   
 }
 
+void Neuron::checkActivation(){
+  if (potential > treshold){
+    activate();
+    potential = 0;
+  }	
+}
+
 int main(){
-  class BasicNeuron : public Neuron{
-  public:
-    void compute(){
-      potential += delta;
-      delta = 0;
-      if (potential > treshold){
-	activate();
-	potential = 0;
-      }	
-    }
-  };
-
-
-  BasicNeuron a1, a2, b1, b2;
+  Neuron a1, a2, b1, b2;
 
   a1.init("a1",0.8);
   a2.init("a2",0.7);
@@ -100,15 +94,15 @@ int main(){
 
     std::cout << "\n";
 
-    a1.process();
-    a2.process();
-    b1.process();
-    b2.process();
+    a1.computePotential();
+    a2.computePotential();
+    b1.computePotential();
+    b2.computePotential();
     
-    a1.compute();
-    a2.compute();
-    b1.compute();
-    b2.compute();
+    a1.checkActivation();
+    a2.checkActivation();
+    b1.checkActivation();
+    b2.checkActivation();
   }
 
  a1.info();
