@@ -8,12 +8,11 @@ class Output;
 
 class Neuron{
  public:
-  Neuron();
-  void init(std::string name, float treshold);
+  Neuron(std::string name, float treshold);
   void setName(std::string name);
   std::string getName();
   void setTreshold(float treshold);
-  void connect(Neuron &neuron, float weight);
+  void connect(Neuron *neuron, float weight);
   void excitate(float weighted_value);
   void excitate(float value, float weight);
   virtual void computePotential();

@@ -8,8 +8,11 @@ all:	$(BIN)
 neuralnetwork.o: neuralnetwork.cpp neuralnetwork.h neuron.h
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-$(BIN):	neuralnetwork.o neuron.cpp neuron.h
-	$(CC) $(CFLAGS) -o $(BIN) neuron.cpp
+neuron.o:	neuron.cpp neuron.h
+	$(CC) $(CFLAGS) -o $@ -c neuron.cpp
+
+$(BIN):	main.cpp neuron.o neuralnetwork.o
+	$(CC) $(CFLAGS) -o $(BIN) $^
 
 run:	$(BIN)
 	./$(BIN)

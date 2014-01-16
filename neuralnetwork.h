@@ -8,10 +8,10 @@
 class NeuralNetwork{
  public:
   ~NeuralNetwork();
-  void addNeuron(Neuron *neuron);
+  void add(Neuron *neuron);
   Neuron *get(std::string name);
   void simulate(bool showInfo = false);
-
+  Neuron *operator[] (std::string name);
  private:
   std::vector< Neuron *> brain;
 };

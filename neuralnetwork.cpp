@@ -9,7 +9,7 @@ NeuralNetwork::~NeuralNetwork(){
   }
 }
 
-void NeuralNetwork::addNeuron(Neuron *neuron){
+void NeuralNetwork::add(Neuron *neuron){
   brain.push_back(neuron);
 }
 
@@ -32,4 +32,8 @@ void NeuralNetwork::simulate(bool showInfo){
     (*neuron)->checkActivation();
     (*neuron)->info();
   }
+}
+
+Neuron *NeuralNetwork::operator [](std::string name){
+    return get(name);
 }
