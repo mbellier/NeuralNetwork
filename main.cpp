@@ -22,7 +22,7 @@ int main(void){
         n["a2"]->excitate(1, .2);
 
         std::cout << "\n * * * Iteration #" << i << " * * *\n";
-        n.simulate(true);
+        n.simulate(false);
     }
 
     return 0;

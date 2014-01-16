@@ -28,9 +28,11 @@ void NeuralNetwork::simulate(bool showInfo){
   for(neuron = brain.begin(); neuron != brain.end(); ++neuron) {
     (*neuron)->computePotential();
   }
+
   for(neuron = brain.begin(); neuron != brain.end(); ++neuron) {
-    (*neuron)->checkActivation();
-    (*neuron)->info();
+      (*neuron)->checkActivation();
+      if (showInfo)
+          (*neuron)->info();
   }
 }
 
