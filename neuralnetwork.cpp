@@ -16,7 +16,7 @@ void NeuralNetwork::add(Neuron *neuron){
 Neuron *NeuralNetwork::get(std::string name){
   for(std::vector< Neuron* >::iterator neuron = brain.begin();
       neuron != brain.end(); ++neuron) {
-    if ((*neuron)->getName().compare(name) != 0){
+    if ((*neuron)->getName().compare(name) == 0){
       return *neuron;
     }
   }
@@ -30,10 +30,17 @@ void NeuralNetwork::simulate(bool showInfo){
   }
 
   for(neuron = brain.begin(); neuron != brain.end(); ++neuron) {
-      (*neuron)->checkActivation();
       if (showInfo)
           (*neuron)->info();
+      (*neuron)->checkActivation();
   }
+}
+
+void NeuralNetwork::info(){
+    std::vector< Neuron* >::iterator neuron;
+    for(neuron = brain.begin(); neuron != brain.end(); ++neuron) {
+        (*neuron)->info();
+    }
 }
 
 Neuron *NeuralNetwork::operator [](std::string name){
