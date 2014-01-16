@@ -46,7 +46,7 @@ void Neuron::activate(){
       ++out) {
     (*out)->neuron.excitate(potential, (*out)->weight);
   }
-   std::cout << " [" << name_ << "] Activation\n";
+   std::cout << " \033[01;32m[" << name_ << "] Activation\033[00m\n";
 }
 
 void Neuron::info(){
@@ -55,7 +55,7 @@ void Neuron::info(){
 }
 
 void Neuron::checkActivation(){
-  if (potential > treshold){
+  if (potential >= treshold){
     activate();
     potential = 0;
   }	
