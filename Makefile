@@ -20,3 +20,6 @@ run:	$(BIN)
 clean:
 	@rm -rf $(BIN) *.o
 	@echo "Cleaned."
+
+debug:	$(BIN)
+	./$(BIN) bite

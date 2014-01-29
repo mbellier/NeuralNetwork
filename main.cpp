@@ -99,29 +99,26 @@ int graph3(bool showInfo){
   NeuralNetwork n;
   n.add(new Neuron("E1", 1.));
   n.add(new Neuron("E2", 1.));
-  n.add(new Neuron("a1", 1.));
-  n.add(new Neuron("a2", 1.));
-  //n.add(new Neuron("a3", -0.5));
-  n.add(new Neuron("a4", 1.)); // inhibiteur
+  n.add(new Neuron("n1", 1.));
+  n.add(new Neuron("n2", 1.));
+  n.add(new Neuron("I1", 1.));
   n.add(new Neuron("S1", 1.));
   n.add(new Neuron("S2", -0.5));
 
-  n["E1"]->connect(n["a1"],  1);
-  //n["E1"]->connect(n["a3"],  -1);
-  n["E2"]->connect(n["a4"],  1);
-  //n["a2"]->connect(n["a1"],   1);
-  n["a4"]->connect(n["a1"], -1);
-  //n["a3"]->connect(n["a1"],   1);
-  n["a1"]->connect(n["S1"],  1);
+  n["E1"]->connect(n["n1"],  1);
+  n["E2"]->connect(n["n2"],  1);
+  n["n2"]->connect(n["I1"],  1);
+  n["I1"]->connect(n["n1"], -1);
+  n["n1"]->connect(n["S1"],  1);
   n["S1"]->connect(n["S2"], -1);
 
   std::cout << "\033[01;34m * * * Initial Position * * *\033[01;00m\n";
   n.info();
 
-  for (int i = 0; i < 20; i++){
+  for (int i = 0; i < 10; i++){
     //if ((i / 10) % 2 == 0 ){
-    n["E1"]->excitate(1, 0.8);
-    n["E2"]->excitate(1, 0.2);
+    n["E1"]->excitate(1, 1.);
+    n["E2"]->excitate(1, 0.);
     //}else{
     //n["a1"]->excitate(1, .14);
     //n["a2"]->excitate(1, .86);
@@ -133,5 +130,5 @@ int graph3(bool showInfo){
 }
 
 int main(int argc, char **argv){
-  return graph1(argc>1);
+  return graph3(argc>1);
 }
